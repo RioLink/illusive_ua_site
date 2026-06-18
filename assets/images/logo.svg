@@ -1,0 +1,8 @@
+<svg width="190" height="62" viewBox="0 0 190 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="190" height="62" rx="16" fill="transparent"/>
+  <g fill="#111111">
+    <path d="M12 47V15h7v32h-7Zm12 0V15h7v32h-7Zm12 0V15h7v32h-7Z"/>
+    <path d="M55 47V15h7v32h-7Zm16 0V15h7v26h16v6H71Zm32 0V15h7v32h-7Zm18 0V15h7v32h-7Zm17 0V15h15c8 0 13 4 13 10 0 4-2 7-6 9 5 1 8 5 8 10 0 7-6 11-15 11h-25Zm7-19h8c4 0 6-2 6-5s-2-5-6-5h-8v10Zm0 13h10c4 0 6-2 6-5s-2-5-7-5h-9v10Z"/>
+  </g>
+  <text x="55" y="12" font-family="Arial, sans-serif" font-size="9" fill="#ff4a12" font-weight="800" letter-spacing="2.4">ILLUSIVE UA</text>
+</svg>
