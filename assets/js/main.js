@@ -76,3 +76,65 @@ if (cookieBox && !localStorage.getItem('illusive-cookie-choice')) {
 openCookies?.addEventListener('click', () => cookieBox?.classList.add('show'));
 document.querySelector('#acceptCookies')?.addEventListener('click', () => setCookieChoice('accepted'));
 document.querySelector('#rejectCookies')?.addEventListener('click', () => setCookieChoice('rejected'));
+
+const homeServiceData = {
+  branding: {
+    word: 'Branding',
+    image: 'assets/images/service/Brand Design.png',
+    alt: 'Branding service',
+    text: 'Будуємо ідентичність, яка має характер: логіка бренду, візуальна система, носії та правила використання.',
+    tags: ['Ідентичність', 'Brand guide', 'Launch kit']
+  },
+  web: {
+    word: 'Website',
+    image: 'assets/images/service/Web Design.png',
+    alt: 'Website service',
+    text: 'Проєктуємо сайти, які пояснюють продукт і ведуть користувача до заявки: структура, UI, адаптив і підготовка до запуску.',
+    tags: ['UX structure', 'UI design', 'Адаптив']
+  },
+  visual: {
+    word: 'Visuals',
+    image: 'assets/images/service/Materiale Vizuale.png',
+    alt: 'Visual materials service',
+    text: 'Створюємо презентації, банери, обкладинки, промо-матеріали й digital-набори, які тримають бренд у єдиному стилі.',
+    tags: ['Презентації', 'Банери', 'Promo kit']
+  }
+};
+
+const homeTabs = document.querySelectorAll('[data-home-service]');
+const serviceStage = document.querySelector('.service-stage');
+const serviceImage = document.querySelector('#homeServiceImage');
+const serviceGiant = document.querySelector('#homeServiceGiant');
+const serviceText = document.querySelector('#homeServiceText');
+const homeServiceTags = document.querySelector('#homeServiceTags');
+const motionLabelWords = document.querySelectorAll('.service-motion-label span');
+
+homeTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const data = homeServiceData[tab.dataset.homeService];
+    if (!data || !serviceImage || !serviceGiant || !serviceText || !homeServiceTags) return;
+    homeTabs.forEach((item) => item.classList.remove('active'));
+    tab.classList.add('active');
+    serviceStage?.classList.add('is-changing');
+    window.setTimeout(() => {
+      serviceGiant.textContent = data.word;
+      motionLabelWords.forEach((word) => {
+        word.textContent = data.word;
+      });
+      serviceImage.src = data.image;
+      serviceImage.alt = data.alt;
+      serviceText.textContent = data.text;
+      homeServiceTags.innerHTML = data.tags.map((tag) => `<span>${tag}</span>`).join('');
+      serviceStage?.classList.remove('is-changing');
+    }, 180);
+  });
+});
+
+const homeHeroInner = document.querySelector('.home-hero-inner');
+const carousel = document.querySelector('.photo-carousel');
+if (homeHeroInner || carousel) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (homeHeroInner) homeHeroInner.style.transform = `translateY(${Math.min(y * 0.08, 34)}px)`;
+  }, { passive: true });
+}
